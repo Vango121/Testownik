@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ListPreference
+        android:key="Multiply"
+        android:title="Powtórzenia"
+        android:summary="Wybierz ilość powtórzeń danego pytania"
+        android:defaultValue="3"
+        android:entries="@array/Values"
+        android:entryValues="@array/Values"
+
+        />
+    <ListPreference
+        android:key="Wrong"
+        android:title="Błędne Odpowiedzi"
+        android:summary="Wybierz o ile więcej razy pojawi się pytanie, po błędnej odpowiedzi"
+        android:defaultValue="3"
+        android:entries="@array/Values"
+        android:entryValues="@array/Values"
+
+        />
+
+</PreferenceScreen>
