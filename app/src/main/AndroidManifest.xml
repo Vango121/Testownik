@@ -24,6 +24,10 @@
         <activity android:name=".Settings" />
         <activity android:name=".Podstawy_Air" />
         <activity android:name=".Report_activity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
