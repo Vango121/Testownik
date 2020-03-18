@@ -13,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
+
 
 import junit.framework.Test;
 
@@ -29,6 +31,7 @@ public class Testownik extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar));
         }
+
     }
     public void Click(View view){
         Intent intent = new Intent(Testownik.this,W4.class);

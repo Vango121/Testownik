@@ -1,6 +1,10 @@
 package com.example.vango.testownik;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +40,10 @@ public class Report_activity extends AppCompatActivity {
         setContentView(R.layout.activity_report_activity);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B0CAFF")));
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar));
+        }
         EditTextError =findViewById(R.id.editText);
         submit = findViewById(R.id.buttonSendData);
         submit.setOnClickListener(new View.OnClickListener() {
