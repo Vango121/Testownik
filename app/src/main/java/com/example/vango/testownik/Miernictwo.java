@@ -44,12 +44,16 @@ TextView pytanienr;
     int questionNumber=0;
     int multiply=10;
     int wrong = 10;
+    String urlAdress="";
     public class DownloadTask extends AsyncTask<String,Void,String>{
 
         @Override
         protected String doInBackground(String... strings) {
             try{
-                BufferedReader reader = new BufferedReader(new InputStreamReader((new URL("http://hackheroes.cba.pl/plik1.txt")).openStream(),"UTF-8"));
+                while(urlAdress.equals("")){
+
+                }
+                BufferedReader reader = new BufferedReader(new InputStreamReader((new URL(urlAdress)).openStream(),"UTF-8"));
                 String line = reader.readLine();
                 String odp="";
                 String pytanie="";
@@ -141,6 +145,10 @@ pytanie.setText(pytania.get(ktore).get(1));
 
             getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar));
         }
+        Intent intent = getIntent();
+        urlAdress=intent.getExtras().getString("adres");
+
+        Toast.makeText(this, urlAdress, Toast.LENGTH_SHORT).show();
         odpA=(Button)findViewById(R.id.buttonA);
         odpB=(Button)findViewById(R.id.buttonB);
         odpC=(Button)findViewById(R.id.buttonC);

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class W4 extends AppCompatActivity {
 
@@ -53,10 +54,16 @@ public class W4 extends AppCompatActivity {
     }
     public void pytania(View view){
         Intent intent = new Intent(W4.this,Miernictwo.class);
+        intent.putExtra("adres","http://hackheroes.cba.pl/plik1.txt");
         W4.this.startActivity(intent);
     }
     public void air(View view){
-        Intent intent = new Intent(W4.this,Podstawy_Air.class);
+        Intent intent = new Intent(W4.this,Miernictwo.class);
+        intent.putExtra("adres","http://hackheroes.cba.pl/combined.txt");
         W4.this.startActivity(intent);
     }
+    public void Telekomuna(View view){
+        Toast.makeText(this, "Soon", Toast.LENGTH_SHORT).show();
+    }
 }
+

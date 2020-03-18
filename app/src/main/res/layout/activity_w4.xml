@@ -39,10 +39,55 @@
         android:fontFamily="@font/roboto"
         android:onClick="air"
         android:text="Podstawy Air"
-        app:layout_constraintBottom_toBottomOf="@id/guideline6"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineAirBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineButtonRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineButtonLeft"
-        app:layout_constraintTop_toTopOf="@id/guideline5" />
+        app:layout_constraintTop_toTopOf="@id/guideline4" />
+
+    <Button
+        android:id="@+id/buttonTelekomuna"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/roboto"
+        android:onClick="Telekomuna"
+        android:text="Podstawy Telekomunikacji"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineTelekomunaBottom"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineButtonRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineButtonLeft"
+        app:layout_constraintTop_toTopOf="@id/guidelineAirBottom" />
+    <Button
+        android:id="@+id/buttonPPS"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/roboto"
+        android:onClick="Telekomuna"
+        android:text="PPS"
+        app:layout_constraintBottom_toBottomOf="@id/guidelinePPSBottom"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineButtonRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineButtonLeft"
+        app:layout_constraintTop_toTopOf="@id/guidelineTelekomunaBottom" />
+    <Button
+        android:id="@+id/buttonPPS2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/roboto"
+        android:onClick="Telekomuna"
+        android:text="PPS 2"
+        app:layout_constraintBottom_toBottomOf="@id/guidelinePPS2Bottom"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineButtonRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineButtonLeft"
+        app:layout_constraintTop_toTopOf="@id/guidelinePPSBottom" />
+    <Button
+        android:id="@+id/buttonIZS"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/roboto"
+        android:onClick="Telekomuna"
+        android:text="IZS"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineIZSBottom"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineButtonRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineButtonLeft"
+        app:layout_constraintTop_toTopOf="@id/guidelinePPS2Bottom" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guidelineButtonLeft"
@@ -73,21 +118,43 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="0dp"
-        app:layout_constraintGuide_percent="0.52"/>
+        app:layout_constraintGuide_percent="0.51"/>
+
     <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
+        android:id="@+id/guidelineAirBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="0dp"
-        app:layout_constraintGuide_percent="0.53"/>
+        app:layout_constraintGuide_percent="0.60"/>
     <android.support.constraint.Guideline
-        android:id="@+id/guideline6"
+        android:id="@+id/guidelineTelekomunaBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="0dp"
-        app:layout_constraintGuide_percent="0.62"/>
+        app:layout_constraintGuide_percent="0.69"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelinePPSBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent="0.78"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelinePPS2Bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent="0.87"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineIZSBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent="0.96"/>
     <android.support.constraint.Guideline
         android:id="@+id/guidelineLogoLeft"
         android:layout_width="wrap_content"
