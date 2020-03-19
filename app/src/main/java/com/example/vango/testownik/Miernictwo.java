@@ -30,6 +30,12 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
+/*
+class which supports all the test name from previous idea to do activity for each test
+
+ */
+
+
 public class Miernictwo extends AppCompatActivity {
 Button odpA;
 Button odpB;
@@ -140,15 +146,14 @@ pytanie.setText(pytania.get(ktore).get(1));
         setContentView(R.layout.activity_miernictwo);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B0CAFF")));
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B0CAFF"))); //kolor actionabar
         if (Build.VERSION.SDK_INT >= 21) {
 
-            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar));
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar)); //kolor paska ze statusem
         }
         Intent intent = getIntent();
-        urlAdress=intent.getExtras().getString("adres");
+        urlAdress=intent.getExtras().getString("adres"); //pobierz adres z którego ma wczytać pytania
 
-        Toast.makeText(this, urlAdress, Toast.LENGTH_SHORT).show();
         odpA=(Button)findViewById(R.id.buttonA);
         odpB=(Button)findViewById(R.id.buttonB);
         odpC=(Button)findViewById(R.id.buttonC);

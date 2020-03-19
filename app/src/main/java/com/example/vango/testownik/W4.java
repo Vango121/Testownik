@@ -63,6 +63,27 @@ public class W4 extends AppCompatActivity {
         W4.this.startActivity(intent);
     }
     public void Telekomuna(View view){
+        Intent intent = new Intent(W4.this,Miernictwo.class);
+        intent.putExtra("adres","http://hackheroes.cba.pl/pt.txt");
+        W4.this.startActivity(intent);
+    }
+    public void Pps(View view){
+        Intent intent = new Intent(W4.this,Miernictwo.class);
+        intent.putExtra("adres","http://hackheroes.cba.pl/pps.txt");
+        W4.this.startActivity(intent);
+    }
+    public void Pps2(View view){
+        Intent intent = new Intent(W4.this,Miernictwo.class);
+        intent.putExtra("adres","http://hackheroes.cba.pl/pps2.txt");
+        W4.this.startActivity(intent);
+    }
+    public void Izs(View view){
+        Intent intent = new Intent(W4.this,Miernictwo.class);
+        intent.putExtra("adres","http://hackheroes.cba.pl/izs.txt");
+        W4.this.startActivity(intent);
+    }
+
+    public void notrdy(View view){
         Toast.makeText(this, "Soon", Toast.LENGTH_SHORT).show();
     }
 }
