@@ -306,7 +306,7 @@ Log.i("bladcreate",e+"");
             question_count.set(ktore,question_count.get(ktore)+wrong);
             Toast.makeText(this, "Bledna odp, licznik"+question_count.get(ktore), Toast.LENGTH_SHORT).show();
         }
-        int correct=pytania.get(ktore).get(0).indexOf("1");
+       /* int correct=pytania.get(ktore).get(0).indexOf("1");
         Log.i("tag",String.valueOf(correct));
         if(correct==0){
             if(odpA.getText().charAt(0)=='a'){
@@ -322,7 +322,7 @@ Log.i("bladcreate",e+"");
                 odpD.setBackgroundColor(Color.GREEN);
             }
         }
-        else if(correct==1){
+        if(correct==1){
             if(odpA.getText().charAt(0)=='b'){
                 odpA.setBackgroundColor(Color.GREEN);
             }
@@ -336,7 +336,7 @@ Log.i("bladcreate",e+"");
                 odpD.setBackgroundColor(Color.GREEN);
             }
         }
-        else if(correct==2){
+        if(correct==2){
             if(odpA.getText().charAt(0)=='c'){
                 odpA.setBackgroundColor(Color.GREEN);
             }
@@ -350,7 +350,7 @@ Log.i("bladcreate",e+"");
                 odpD.setBackgroundColor(Color.GREEN);
             }
         }
-        else if(correct==3){
+        if(correct==3){
             if(odpA.getText().charAt(0)=='d'){
                 odpA.setBackgroundColor(Color.GREEN);
             }
@@ -363,6 +363,67 @@ Log.i("bladcreate",e+"");
             else if(odpD.getText().charAt(0)=='d'){
                 odpD.setBackgroundColor(Color.GREEN);
             }
+        }
+*/
+        int correct = pytania.get(ktore).get(0).indexOf("1");
+        while(correct >= 0) {
+            if(correct==0){
+                if(odpA.getText().charAt(0)=='a'){
+                    odpA.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpB.getText().charAt(0)=='a'){
+                    odpB.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpC.getText().charAt(0)=='a'){
+                    odpC.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpD.getText().charAt(0)=='a'){
+                    odpD.setBackgroundColor(Color.GREEN);
+                }
+            }
+            else if(correct==1){
+                if(odpA.getText().charAt(0)=='b'){
+                    odpA.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpB.getText().charAt(0)=='b'){
+                    odpB.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpC.getText().charAt(0)=='b'){
+                    odpC.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpD.getText().charAt(0)=='b'){
+                    odpD.setBackgroundColor(Color.GREEN);
+                }
+            }
+            else if(correct==2){
+                if(odpA.getText().charAt(0)=='c'){
+                    odpA.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpB.getText().charAt(0)=='c'){
+                    odpB.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpC.getText().charAt(0)=='c'){
+                    odpC.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpD.getText().charAt(0)=='c'){
+                    odpD.setBackgroundColor(Color.GREEN);
+                }
+            }
+            else if(correct==3){
+                if(odpA.getText().charAt(0)=='d'){
+                    odpA.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpB.getText().charAt(0)=='d'){
+                    odpB.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpC.getText().charAt(0)=='d'){
+                    odpC.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpD.getText().charAt(0)=='d'){
+                    odpD.setBackgroundColor(Color.GREEN);
+                }
+            }
+            correct = pytania.get(ktore).get(0).indexOf("1", correct+1);
         }
         odpAclick=false;
         odpBclick=false;
