@@ -1,4 +1,4 @@
-package com.example.vango.testownik;
+package com.vango.testownik;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -50,7 +50,12 @@ public class Report_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 GetDataFromEditText();
-                SendDataToServer(getValue);
+                if(getValue.length()>0){
+                    SendDataToServer(getValue);
+                }
+                else{
+                    Toast.makeText(Report_activity.this, "Uzupełnij wiadomość", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

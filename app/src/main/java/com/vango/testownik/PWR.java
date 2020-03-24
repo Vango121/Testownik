@@ -1,4 +1,4 @@
-package com.example.vango.testownik;
+package com.vango.testownik;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;

@@ -1,4 +1,4 @@
-package com.example.vango.testownik;
+package com.vango.testownik;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 public class W4 extends AppCompatActivity {
 
@@ -81,10 +80,6 @@ public class W4 extends AppCompatActivity {
         Intent intent = new Intent(W4.this,Miernictwo.class);
         intent.putExtra("adres","http://hackheroes.cba.pl/izs.txt");
         W4.this.startActivity(intent);
-    }
-
-    public void notrdy(View view){
-        Toast.makeText(this, "Soon", Toast.LENGTH_SHORT).show();
     }
 }
 

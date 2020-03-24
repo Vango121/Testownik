@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.vango.testownik">
+    package="com.vango.testownik" >
+
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Testownik">
+        <activity android:name="com.vango.testownik.Testownik">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".PWR" />
-        <activity android:name=".W4" />
-        <activity android:name=".Miernictwo" />
-        <activity android:name=".Settings" />
-        <activity android:name=".Podstawy_Air" />
-        <activity android:name=".Report_activity"></activity>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false"/>
+        <activity android:name="com.vango.testownik.PWR" />
+        <activity android:name="com.vango.testownik.W4" />
+        <activity android:name="com.vango.testownik.Miernictwo" />
+        <activity android:name="com.vango.testownik.Settings" />
+        <activity android:name="com.vango.testownik.Podstawy_Air" />
+        <activity android:name="com.vango.testownik.Report_activity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

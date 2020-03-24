@@ -1,4 +1,4 @@
-package com.example.vango.testownik;
+package com.vango.testownik;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;

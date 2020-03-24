@@ -1,4 +1,4 @@
-package com.example.vango.testownik;
+package com.vango.testownik;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

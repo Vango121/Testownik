@@ -1,4 +1,4 @@
-package com.example.vango.testownik;
+package com.vango.testownik;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,26 +28,36 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
-public class Podstawy_Air extends AppCompatActivity {
-    Button odpA;
-    Button odpB;
-    Button odpC;
-    Button odpD;
-    Button sprawdz;
-    Button dalej;
-    TextView pytanie;
-    TextView pytanienr;
+/*
+class which supports all the test name from previous idea to do activity for each test
+
+ */
+
+
+public class Miernictwo extends AppCompatActivity {
+Button odpA;
+Button odpB;
+Button odpC;
+Button odpD;
+Button sprawdz;
+Button dalej;
+TextView pytanie;
+TextView pytanienr;
     ArrayList<ArrayList<String>> pytania = new ArrayList<ArrayList<String>>();
     ArrayList<Integer> question_count= new ArrayList<>();
     int questionNumber=0;
     int multiply=10;
     int wrong = 10;
-    public class DownloadTask extends AsyncTask<String,Void,String> {
+    String urlAdress="";
+    public class DownloadTask extends AsyncTask<String,Void,String>{
 
         @Override
         protected String doInBackground(String... strings) {
             try{
-                BufferedReader reader = new BufferedReader(new InputStreamReader((new URL("http://hackheroes.cba.pl/combined.txt")).openStream(),"UTF-8"));
+                while(urlAdress.equals("")){
+
+                }
+                BufferedReader reader = new BufferedReader(new InputStreamReader((new URL(urlAdress)).openStream(),"UTF-8"));
                 String line = reader.readLine();
                 String odp="";
                 String pytanie="";
@@ -60,19 +70,19 @@ public class Podstawy_Air extends AppCompatActivity {
                 for( int k = 0; line!=null; k++)
                 {
 
-                    if(temp==0){
-                        odp=line;
+                   if(temp==0){
+                       odp=line;
+                   }
+                   else if(temp==1){
+                       pytanie=line;
+                   }
+                  else if(temp==2){
+                       a=line;
+                   }
+                   else if(temp==3){
+                       b=line;
                     }
-                    else if(temp==1){
-                        pytanie=line;
-                    }
-                    else if(temp==2){
-                        a=line;
-                    }
-                    else if(temp==3){
-                        b=line;
-                    }
-                    else if(temp==4){
+                   else if(temp==4){
                         c=line;
                     }
                     else if(temp==5){
@@ -82,68 +92,73 @@ public class Podstawy_Air extends AppCompatActivity {
                     temp++;
                     line=reader.readLine();
                     if(temp==6){
-                        temp=0;
-                        pytania.add(new ArrayList<String>(Arrays.asList(odp,pytanie,a,b,c,d)));
+                     temp=0;
+                     pytania.add(new ArrayList<String>(Arrays.asList(odp,pytanie,a,b,c,d)));
                         question_count.add(multiply);
                     }
                 }
             }catch (Exception e){
-                Log.i("bladasync",e+"");
+
             }
             return null;
         }
     }
     int ktore;//numer pytania
+public void wylosuj(){
+    questionNumber++;
+    int ile=0;
 
+    Random random = new Random();
 
-    public void wylosuj(){
-        questionNumber++;
-        int ile=0;
-        Random random = new Random();
-        do{
-            ktore=random.nextInt(pytania.size());}
-        while (question_count.get(ktore)==0);
-        {
-            Log.i("while","dziala");
-        }
-        Log.i("nr pyt",ktore+"");
-        pytanienr.setText("Pytanie nr: "+questionNumber);
-        pytanie.setText(pytania.get(ktore).get(1));
-        ArrayList<Integer> numbers = new ArrayList<Integer>();
-
-        while (numbers.size() < 4) {
-            int newint = random.nextInt(4)+2;
-            if (!numbers.contains(newint)) {
-                numbers.add(newint);
-            }
-        }
-
-        odpA.setText(pytania.get(ktore).get(numbers.get(0)));
-        odpB.setText(pytania.get(ktore).get(numbers.get(1)));
-        odpC.setText(pytania.get(ktore).get(numbers.get(2)));
-        odpD.setText(pytania.get(ktore).get(numbers.get(3)));
-        Log.i("Pytanie",pytania.get(ktore).get(numbers.get(1)));
+    do{
+     ktore=random.nextInt(pytania.size());}
+     while (question_count.get(ktore)==0);
+    {
     }
 
+pytanienr.setText("Pytanie nr: "+questionNumber);
+pytanie.setText(pytania.get(ktore).get(1));
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+    while (numbers.size() < 4) {
 
+    int newint = random.nextInt(4)+2;
+        if (!numbers.contains(newint)) {
+            numbers.add(newint);
+        }
+    }
+
+    odpA.setText(pytania.get(ktore).get(numbers.get(0)));
+    odpB.setText(pytania.get(ktore).get(numbers.get(1)));
+    odpC.setText(pytania.get(ktore).get(numbers.get(2)));
+    odpD.setText(pytania.get(ktore).get(numbers.get(3)));
+    Log.i("Pytanie",pytania.get(ktore).get(numbers.get(1)));
+
+
+
+
+}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_podstawy__air);
+        setContentView(R.layout.activity_miernictwo);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B0CAFF")));
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B0CAFF"))); //kolor actionabar
         if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar));
+
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar)); //kolor paska ze statusem
         }
-        odpA=(Button)findViewById(R.id.buttonAA);
-        odpB=(Button)findViewById(R.id.buttonBB);
-        odpC=(Button)findViewById(R.id.buttonCC);
-        odpD=(Button)findViewById(R.id.buttonDD);
-        sprawdz=(Button)findViewById(R.id.Check_air);
-        dalej=(Button)findViewById(R.id.Next);
-        pytanie=(TextView)findViewById(R.id.question_air);
-        pytanienr=(TextView)findViewById(R.id.questionId_air);
+        Intent intent = getIntent();
+        urlAdress=intent.getExtras().getString("adres"); //pobierz adres z którego ma wczytać pytania
+
+        odpA=(Button)findViewById(R.id.buttonA);
+        odpB=(Button)findViewById(R.id.buttonB);
+        odpC=(Button)findViewById(R.id.buttonC);
+        odpD=(Button)findViewById(R.id.buttonD);
+        sprawdz=(Button)findViewById(R.id.Check);
+        dalej = (Button)findViewById(R.id.Nexty);
+        pytanie=(TextView)findViewById(R.id.question);
+        pytanienr=(TextView)findViewById(R.id.questionId);
         //daj buttony od razu w taki sam kolor i wyglad
         odpA.setBackgroundResource(android.R.drawable.btn_default);
         odpB.setBackgroundResource(android.R.drawable.btn_default);
@@ -156,15 +171,14 @@ public class Podstawy_Air extends AppCompatActivity {
         String s = spref.getString("Wrong", "2"); // wrong get shared preferences
         wrong=Integer.valueOf(s);
 
-        Podstawy_Air.DownloadTask task=new Podstawy_Air.DownloadTask();
+        DownloadTask task=new DownloadTask();
         try{
             task.execute().get(); //z get czeka na wykonanie
             wylosuj();
-            Log.i("check list",pytania.get(1).get(1));
+
 
 
         }catch (Exception e){
-            Log.i("bladcreate",e+"");
         }
 
     }
@@ -176,7 +190,6 @@ public class Podstawy_Air extends AppCompatActivity {
         inflater.inflate(R.menu.menu,menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
@@ -184,28 +197,26 @@ public class Podstawy_Air extends AppCompatActivity {
             this.finish();
         }
         if(item.getItemId()==R.id.Ustawienia){
-            Intent intentt= new Intent(Podstawy_Air.this,Settings.class);
-            Podstawy_Air.this.startActivity(intentt);
+            Intent intentt= new Intent(Miernictwo.this,Settings.class);
+            Miernictwo.this.startActivity(intentt);
             return true;
         }
         if(item.getItemId()==R.id.Report){
-            Intent intentt= new Intent(Podstawy_Air.this,Report_activity.class);
-            Podstawy_Air.this.startActivity(intentt);
+            Intent intentt= new Intent(Miernictwo.this,Report_activity.class);
+            Miernictwo.this.startActivity(intentt);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
-
     boolean odpAclick=false;
     boolean odpBclick=false;
     boolean odpCclick=false;
     boolean odpDclick=false;
 
 
-    public void PrzyciskOdpp (View view){
+    public void PrzyciskOdp (View view){
 
-        if(view.getId()==R.id.buttonAA){
+        if(view.getId()==R.id.buttonA){
             if(!odpAclick) {
                 odpA.setBackgroundColor(Color.YELLOW);
                 odpAclick=true;
@@ -216,7 +227,7 @@ public class Podstawy_Air extends AppCompatActivity {
             }
         }
 
-        else if(view.getId()==R.id.buttonBB){
+        else if(view.getId()==R.id.buttonB){
             if(!odpBclick) {
                 odpB.setBackgroundColor(Color.YELLOW);
                 odpBclick=true;
@@ -227,7 +238,7 @@ public class Podstawy_Air extends AppCompatActivity {
             }
         }
 
-        else if(view.getId()==R.id.buttonCC){
+        else if(view.getId()==R.id.buttonC){
             if(!odpCclick) {
                 odpC.setBackgroundColor(Color.YELLOW);
                 odpCclick=true;
@@ -238,7 +249,7 @@ public class Podstawy_Air extends AppCompatActivity {
             }
         }
 
-        else if(view.getId()==R.id.buttonDD){
+        else if(view.getId()==R.id.buttonD){
             if(!odpDclick) {
                 odpD.setBackgroundColor(Color.YELLOW);
                 odpDclick=true;
@@ -251,7 +262,7 @@ public class Podstawy_Air extends AppCompatActivity {
     }
 
 
-    public void checkAnswerr(View view){
+    public void checkAnswer(View view){
         StringBuilder wynik=new StringBuilder("0000");
 
         int a=0;
@@ -291,7 +302,7 @@ public class Podstawy_Air extends AppCompatActivity {
             question_count.set(ktore,question_count.get(ktore)+wrong);
             Toast.makeText(this, "Bledna odp, licznik"+question_count.get(ktore), Toast.LENGTH_SHORT).show();
         }
-        int correct=pytania.get(ktore).get(0).indexOf("1");
+       /* int correct=pytania.get(ktore).get(0).indexOf("1");
         Log.i("tag",String.valueOf(correct));
         if(correct==0){
             if(odpA.getText().charAt(0)=='a'){
@@ -307,7 +318,7 @@ public class Podstawy_Air extends AppCompatActivity {
                 odpD.setBackgroundColor(Color.GREEN);
             }
         }
-        else if(correct==1){
+        if(correct==1){
             if(odpA.getText().charAt(0)=='b'){
                 odpA.setBackgroundColor(Color.GREEN);
             }
@@ -321,7 +332,7 @@ public class Podstawy_Air extends AppCompatActivity {
                 odpD.setBackgroundColor(Color.GREEN);
             }
         }
-        else if(correct==2){
+        if(correct==2){
             if(odpA.getText().charAt(0)=='c'){
                 odpA.setBackgroundColor(Color.GREEN);
             }
@@ -335,7 +346,7 @@ public class Podstawy_Air extends AppCompatActivity {
                 odpD.setBackgroundColor(Color.GREEN);
             }
         }
-        else if(correct==3){
+        if(correct==3){
             if(odpA.getText().charAt(0)=='d'){
                 odpA.setBackgroundColor(Color.GREEN);
             }
@@ -349,6 +360,67 @@ public class Podstawy_Air extends AppCompatActivity {
                 odpD.setBackgroundColor(Color.GREEN);
             }
         }
+*/
+        int correct = pytania.get(ktore).get(0).indexOf("1");
+        while(correct >= 0) {
+            if(correct==0){
+                if(odpA.getText().charAt(0)=='a'){
+                    odpA.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpB.getText().charAt(0)=='a'){
+                    odpB.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpC.getText().charAt(0)=='a'){
+                    odpC.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpD.getText().charAt(0)=='a'){
+                    odpD.setBackgroundColor(Color.GREEN);
+                }
+            }
+            else if(correct==1){
+                if(odpA.getText().charAt(0)=='b'){
+                    odpA.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpB.getText().charAt(0)=='b'){
+                    odpB.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpC.getText().charAt(0)=='b'){
+                    odpC.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpD.getText().charAt(0)=='b'){
+                    odpD.setBackgroundColor(Color.GREEN);
+                }
+            }
+            else if(correct==2){
+                if(odpA.getText().charAt(0)=='c'){
+                    odpA.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpB.getText().charAt(0)=='c'){
+                    odpB.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpC.getText().charAt(0)=='c'){
+                    odpC.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpD.getText().charAt(0)=='c'){
+                    odpD.setBackgroundColor(Color.GREEN);
+                }
+            }
+            else if(correct==3){
+                if(odpA.getText().charAt(0)=='d'){
+                    odpA.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpB.getText().charAt(0)=='d'){
+                    odpB.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpC.getText().charAt(0)=='d'){
+                    odpC.setBackgroundColor(Color.GREEN);
+                }
+                else if(odpD.getText().charAt(0)=='d'){
+                    odpD.setBackgroundColor(Color.GREEN);
+                }
+            }
+            correct = pytania.get(ktore).get(0).indexOf("1", correct+1);
+        }
         odpAclick=false;
         odpBclick=false;
         odpCclick=false;
@@ -359,7 +431,6 @@ public class Podstawy_Air extends AppCompatActivity {
         temp_sort.addAll(question_count);
         Collections.sort(temp_sort);
         Collections.reverse(temp_sort);
-        Log.i("check",""+temp_sort.get(0));
         if(temp_sort.get(0)==0){
             Toast.makeText(this, "Gratulacje ukonczyles testownik srednia ilosc powtorzen:"+question_count.size()/questionNumber, Toast.LENGTH_SHORT).show();
             sprawdz.setVisibility(View.GONE);
@@ -375,10 +446,9 @@ public class Podstawy_Air extends AppCompatActivity {
             sprawdz.setVisibility(View.GONE);
             dalej.setVisibility(View.VISIBLE);
         }
-        Log.i("wynik",wynik.toString());
     }
 
-    public void Dalej(View view){
+    public void Dalejj(View view){
         sprawdz.setVisibility(View.VISIBLE);
         dalej.setVisibility(View.GONE);
         odpA.setBackgroundResource(android.R.drawable.btn_default);
