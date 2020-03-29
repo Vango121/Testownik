@@ -20,5 +20,12 @@
         android:entryValues="@array/Values"
 
         />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="Autosave"
+        android:title="Automatyczny zapis"
+        android:summaryOn="Zapis automatyczny postępu włączony. Kliknij, aby wyłączyć"
+        android:summaryOff="Zapis automatyczny postępu wyłączony. Kliknij, aby włączyć"
+        />
 
 </PreferenceScreen>
