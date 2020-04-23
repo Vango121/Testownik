@@ -6,4 +6,7 @@
     <color name="statusbar">#B0CAFF</color>
     <color name="ProgressBar">	#00FF00</color>
     <color name="ProgressBarBottom">#FF4500</color>
+    <color name="buttonColor">#85AEFF</color>
+    <color name="buttonClicked">#B0CBFF</color>
+    <color name="test">#5C92FD</color>
 </resources>

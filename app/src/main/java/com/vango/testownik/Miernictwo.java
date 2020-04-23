@@ -49,6 +49,7 @@ Button sprawdz;
 Button dalej;
 TextView pytanie;
 TextView pytanienr;
+
 boolean autosave; // settings check if on or off
 boolean saved; // check if is saved
 boolean game_ended=false;
@@ -129,7 +130,8 @@ public void wylosuj(){
     {
     }
 
-pytanienr.setText("Pytanie nr: "+questionNumber);
+pytanienr.setText("Pozostałe powtórzenia : "+question_count.get(ktore));
+
 pytanie.setText(pytania.get(ktore).get(1));
     ArrayList<Integer> numbers = new ArrayList<Integer>();
     while (numbers.size() < 4) {
@@ -252,10 +254,10 @@ public void zapis(){
         setContentView(R.layout.activity_miernictwo);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B0CAFF"))); //kolor actionabar
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5C92FD"))); //kolor actionabar
         if (Build.VERSION.SDK_INT >= 21) {
 
-            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar)); //kolor paska ze statusem
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.test)); //kolor paska ze statusem
         }
         Intent intent = getIntent();
         urlAdress=intent.getExtras().getString("adres"); //pobierz adres z którego ma wczytać pytania
@@ -267,14 +269,10 @@ public void zapis(){
         sprawdz=findViewById(R.id.Check);
         dalej = findViewById(R.id.Nexty);
         pytanie=findViewById(R.id.question);
-        pytanienr=findViewById(R.id.questionId);
+        pytanienr=findViewById(R.id.licznik);
         progressBar = findViewById(R.id.animate_progress_bar);
-        //daj buttony od razu w taki sam kolor i wyglad
-        odpA.setBackgroundResource(android.R.drawable.btn_default);
-        odpB.setBackgroundResource(android.R.drawable.btn_default);
-        odpC.setBackgroundResource(android.R.drawable.btn_default);
-        odpD.setBackgroundResource(android.R.drawable.btn_default);
 
+        toolbarName();
         SharedPreferences spref = PreferenceManager.getDefaultSharedPreferences(this);
         String ss = spref.getString("Multiply", "4");//multiply get shared preference
         multiply=Integer.valueOf(ss);
@@ -342,6 +340,38 @@ public void zapis(){
             }
         }
     }
+    private void toolbarName(){
+        ActionBar actionBar = getSupportActionBar();
+        if (urlAdress.equals("http://hackheroes.cba.pl/plik1.txt"))//miernictwo
+        {
+         actionBar.setTitle("Miernictwo");
+        }
+        else if (urlAdress.equals("http://hackheroes.cba.pl/combined.txt"))//air
+        {
+            actionBar.setTitle("Podstawy Air");
+        }
+        else if (urlAdress.equals("http://hackheroes.cba.pl/pt.txt"))//telekomuna
+        {
+            actionBar.setTitle("Podstawy Telekomunikacji");
+        }
+        else if (urlAdress.equals("http://hackheroes.cba.pl/pps.txt"))//pps
+        {
+            actionBar.setTitle("PPS");
+        }
+        else if (urlAdress.equals("http://hackheroes.cba.pl/pps2.txt"))//pps2
+        {
+            actionBar.setTitle("PPS 2");
+        }
+        else if (urlAdress.equals("http://hackheroes.cba.pl/izs.txt"))//izs
+        {
+            actionBar.setTitle("IZS");
+        }
+        else if (urlAdress.equals("http://hackheroes.cba.pl/po.txt"))//po
+        {
+            actionBar.setTitle("Programowanie Obiektowe");
+        }
+        invalidateOptionsMenu();
+    }
     public void closee(){
         if(autosave) {
             SharedPreferences spref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -396,6 +426,8 @@ public void zapis(){
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu,menu);
+        menu.getItem(1).setEnabled(false);
+        menu.getItem(1).setVisible(false);
         return true;
     }
     @Override
@@ -407,6 +439,7 @@ public void zapis(){
         }
         if(item.getItemId()==R.id.Ustawienia){
             Intent intentt= new Intent(Miernictwo.this,Settings.class);
+
             Miernictwo.this.startActivity(intentt);
             return true;
         }
@@ -428,44 +461,44 @@ public void zapis(){
 
         if(view.getId()==R.id.buttonA){
             if(!odpAclick) {
-                odpA.setBackgroundColor(Color.YELLOW);
+                odpA.setBackgroundColor(getResources().getColor(R.color.buttonClicked));
                 odpAclick=true;
             }
             else{
-                odpA.setBackgroundResource(android.R.drawable.btn_default);
+                odpA.setBackgroundColor(getResources().getColor(R.color.buttonColor));
                 odpAclick=false;
             }
         }
 
         else if(view.getId()==R.id.buttonB){
             if(!odpBclick) {
-                odpB.setBackgroundColor(Color.YELLOW);
+                odpB.setBackgroundColor(getResources().getColor(R.color.buttonClicked));
                 odpBclick=true;
             }
             else{
-                odpB.setBackgroundResource(android.R.drawable.btn_default);
+                odpB.setBackgroundColor(getResources().getColor(R.color.buttonColor));
                 odpBclick=false;
             }
         }
 
         else if(view.getId()==R.id.buttonC){
             if(!odpCclick) {
-                odpC.setBackgroundColor(Color.YELLOW);
+                odpC.setBackgroundColor(getResources().getColor(R.color.buttonClicked));
                 odpCclick=true;
             }
             else{
-                odpC.setBackgroundResource(android.R.drawable.btn_default);
+                odpC.setBackgroundColor(getResources().getColor(R.color.buttonColor));
                 odpCclick=false;
             }
         }
 
         else if(view.getId()==R.id.buttonD){
             if(!odpDclick) {
-                odpD.setBackgroundColor(Color.YELLOW);
+                odpD.setBackgroundColor(getResources().getColor(R.color.buttonClicked));
                 odpDclick=true;
             }
             else{
-                odpD.setBackgroundResource(android.R.drawable.btn_default);
+                odpD.setBackgroundColor(getResources().getColor(R.color.buttonColor));
                 odpDclick=false;
             }
         }
@@ -507,78 +540,19 @@ public void zapis(){
         wynik.setCharAt(dPlace,(char)(d+'0'));
         if(wynik.toString().equals(pytania.get(ktore).get(0))){
             question_count.set(ktore,question_count.get(ktore)-1);
-            //Toast.makeText(this, "Poprawna odp, licznik"+question_count.get(ktore), Toast.LENGTH_SHORT).show();
-            Toasty.success(this,"Poprawna odp, licznik "+question_count.get(ktore),Toast.LENGTH_SHORT,true).show();
+
+            Toasty.success(this,"Poprawna odp",Toast.LENGTH_SHORT,true).show();
             goodAnswers++;
             progressBar.setMax(questionNumber);
             progressBar.setProgress(goodAnswers);
         }
         else{
             question_count.set(ktore,question_count.get(ktore)+wrong);
-            //Toast.makeText(this, "Bledna odp, licznik"+question_count.get(ktore), Toast.LENGTH_SHORT).show();
-            Toasty.error(this,"Bledna odp, licznik "+question_count.get(ktore),Toast.LENGTH_SHORT).show();
+            Toasty.error(this,"Bledna odp",Toast.LENGTH_SHORT).show();
 
             progressBar.setMax(questionNumber);
         }
-       /* int correct=pytania.get(ktore).get(0).indexOf("1");
-        Log.i("tag",String.valueOf(correct));
-        if(correct==0){
-            if(odpA.getText().charAt(0)=='a'){
-                odpA.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpB.getText().charAt(0)=='a'){
-                odpB.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpC.getText().charAt(0)=='a'){
-                odpC.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpD.getText().charAt(0)=='a'){
-                odpD.setBackgroundColor(Color.GREEN);
-            }
-        }
-        if(correct==1){
-            if(odpA.getText().charAt(0)=='b'){
-                odpA.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpB.getText().charAt(0)=='b'){
-                odpB.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpC.getText().charAt(0)=='b'){
-                odpC.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpD.getText().charAt(0)=='b'){
-                odpD.setBackgroundColor(Color.GREEN);
-            }
-        }
-        if(correct==2){
-            if(odpA.getText().charAt(0)=='c'){
-                odpA.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpB.getText().charAt(0)=='c'){
-                odpB.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpC.getText().charAt(0)=='c'){
-                odpC.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpD.getText().charAt(0)=='c'){
-                odpD.setBackgroundColor(Color.GREEN);
-            }
-        }
-        if(correct==3){
-            if(odpA.getText().charAt(0)=='d'){
-                odpA.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpB.getText().charAt(0)=='d'){
-                odpB.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpC.getText().charAt(0)=='d'){
-                odpC.setBackgroundColor(Color.GREEN);
-            }
-            else if(odpD.getText().charAt(0)=='d'){
-                odpD.setBackgroundColor(Color.GREEN);
-            }
-        }
-*/
+
         int correct = pytania.get(ktore).get(0).indexOf("1");
         while(correct >= 0) {
             if(correct==0){
@@ -669,10 +643,10 @@ public void zapis(){
     public void Dalejj(View view){
         sprawdz.setVisibility(View.VISIBLE);
         dalej.setVisibility(View.GONE);
-        odpA.setBackgroundResource(android.R.drawable.btn_default);
-        odpB.setBackgroundResource(android.R.drawable.btn_default);
-        odpC.setBackgroundResource(android.R.drawable.btn_default);
-        odpD.setBackgroundResource(android.R.drawable.btn_default);
+        odpA.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+        odpB.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+        odpC.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+        odpD.setBackgroundColor(getResources().getColor(R.color.buttonColor));
         wylosuj();
     }
 }

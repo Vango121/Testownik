@@ -6,21 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.vango.testownik.Testownik">
 
-    <Button
-        android:id="@+id/PWR"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
 
-        android:elevation="5dp"
-        android:fontFamily="@font/roboto"
-        android:onClick="Click"
-        android:text="PWR"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineButtonBottom"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineButtonRight"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guidelineButtonLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineLogoBottom" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -35,6 +21,14 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineLogoLeft"
         app:layout_constraintTop_toTopOf="@+id/guidelineLogoTop"
          />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineLogoBottom" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guidelineLogoLeft"
@@ -65,26 +59,5 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.40" />
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineButtonLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="0dp"
-        app:layout_constraintGuide_percent="0.1"/>
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineButtonRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="0dp"
-        app:layout_constraintGuide_percent="0.9"/>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineButtonBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="0dp"
-        app:layout_constraintGuide_percent="0.47" />
 </android.support.constraint.ConstraintLayout>
